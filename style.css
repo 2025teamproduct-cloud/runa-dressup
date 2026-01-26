@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* パレット */
+.palette {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+  border-right: 1px solid #999;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.upload {
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.item {
+  position: relative;
+  background: #ddd;
+  border: 1px solid #999;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 削除ボタン */
+.delete {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  background: #999;
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* リザルト */
+.result {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+  border: 1px solid #999;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
+}

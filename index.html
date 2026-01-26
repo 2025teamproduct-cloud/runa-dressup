@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>簡易着せ替えサンプル</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- パレット -->
+  <div class="palette">
+    <div class="section">
+      <h3>素体</h3>
+      <input type="file" class="upload" id="baseUpload" accept="image/*">
+      <div class="grid" id="baseList"></div>
+    </div>
+
+    <div class="section">
+      <h3>着せ替え</h3>
+      <input type="file" class="upload" id="itemUpload" accept="image/*">
+      <div class="grid" id="itemList"></div>
+    </div>
+  </div>
+
+  <!-- リザルト -->
+  <div class="result">
+    <div class="preview" id="preview">
+      <img id="previewBase">
+      <img id="previewItem">
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
