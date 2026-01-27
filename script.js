@@ -1,9 +1,10 @@
 const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
-const resultImg = document.getElementById("resultImage");
-const resultArea = document.getElementById("result");
 const loadBtn = document.getElementById("loadFolder");
 const bgReloadBtn = document.getElementById("bgReload");
+
+/* ★ 正しい bg 表示先 */
+const resultCanvas = document.getElementById("resultCanvas");
 
 /* ===== 背景画像 ===== */
 const backgrounds = [
@@ -15,11 +16,14 @@ const backgrounds = [
 ];
 
 let bgIndex = 0;
-resultArea.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 
+/* 初期 bg 表示 */
+resultCanvas.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
+
+/* bg 切り替え */
 bgReloadBtn.addEventListener("click", () => {
   bgIndex = (bgIndex + 1) % backgrounds.length;
-  resultArea.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
+  resultCanvas.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 });
 
 /* ===== ジャンル管理 ===== */
@@ -76,9 +80,24 @@ function renderGrid() {
     img.src = src;
 
     img.addEventListener("click", () => {
-      resultImg.src = src;
+      applyLayer(src, currentGenre);
     });
 
     grid.appendChild(img);
   });
+}
+
+/* 着せ替えレイヤー反映 */
+function applyLayer(src, genre) {
+  let layer = resultCanvas.querySelector(
+    `img[data-genre="${genre}"]`
+  );
+
+  if (!layer) {
+    layer = document.createElement("img");
+    layer.dataset.genre = genre;
+    resultCanvas.appendChild(layer);
+  }
+
+  layer.src = src;
 }
