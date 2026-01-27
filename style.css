@@ -110,8 +110,8 @@ body {
 
 /* bg 表示用キャンバス（1480×2092 比率） */
 .result-canvas {
-  width: 100%;
-  max-width: 420px;
+  /* width: 100%;
+  max-width: 420px; */
   height: 630px;
   aspect-ratio: 1480 / 2092;
   background-size: contain;
