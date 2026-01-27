@@ -1,6 +1,7 @@
 const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
-const result = document.getElementById("resultImage");
+const resultImg = document.getElementById("resultImage");
+const resultArea = document.getElementById("result");
 
 /* ジャンル切替 */
 genres.forEach(g => {
@@ -10,7 +11,7 @@ genres.forEach(g => {
   });
 });
 
-/* フォルダ読み込み */
+/* フォルダ読み込み（素材） */
 document.getElementById("loadFolder").addEventListener("click", async () => {
   grid.innerHTML = "";
 
@@ -24,10 +25,26 @@ document.getElementById("loadFolder").addEventListener("click", async () => {
       const img = document.createElement("img");
       img.src = url;
       img.addEventListener("click", () => {
-        result.src = url;
+        resultImg.src = url;
       });
 
       grid.appendChild(img);
     }
   }
+});
+
+/* ===== 背景切り替え ===== */
+
+const backgrounds = [
+  "img/bg1.png",
+  "img/bg2.png",
+  "img/bg3.png"
+];
+
+let bgIndex = 0;
+resultArea.style.backgroundImage = `url(${backgrounds[0]})`;
+
+document.getElementById("bgReload").addEventListener("click", () => {
+  bgIndex = (bgIndex + 1) % backgrounds.length;
+  resultArea.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 });

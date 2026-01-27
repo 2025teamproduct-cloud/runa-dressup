@@ -7,28 +7,33 @@
 </head>
 <body>
 
-<div class="app">
+<div class="wrapper">
+  <div class="app">
 
-  <!-- ジャンル -->
-  <div class="genres">
-    <div class="genre active">ワンピース</div>
-    <div class="genre">トップス</div>
-    <div class="genre">ボトムス</div>
-    <div class="genre">インナー</div>
-    <div class="genre">シューズ</div>
+    <!-- リロード -->
+    <button id="bgReload" class="reload-btn">↻</button>
+
+    <!-- ジャンル -->
+    <div class="genres">
+      <div class="genre active">ワンピース</div>
+      <div class="genre">トップス</div>
+      <div class="genre">ボトムス</div>
+      <div class="genre">インナー</div>
+      <div class="genre">シューズ</div>
+    </div>
+
+    <!-- パレット -->
+    <div class="palette">
+      <button id="loadFolder" class="load-btn">＋</button>
+      <div class="grid" id="itemGrid"></div>
+    </div>
+
+    <!-- リザルト -->
+    <div class="result" id="result">
+      <img id="resultImage">
+    </div>
+
   </div>
-
-  <!-- パレット -->
-  <div class="palette">
-    <button id="loadFolder" class="load-btn">＋</button>
-    <div class="grid" id="itemGrid"></div>
-  </div>
-
-  <!-- リザルト -->
-  <div class="result">
-    <img id="resultImage">
-  </div>
-
 </div>
 
 <script src="script.js"></script>
