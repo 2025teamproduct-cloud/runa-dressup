@@ -36,9 +36,11 @@ document.getElementById("loadFolder").addEventListener("click", async () => {
 /* ===== 背景切り替え ===== */
 
 const backgrounds = [
-  "img/bg1.png",
+  "img/bg1.jpg",
   "img/bg2.png",
-  "img/bg3.png"
+  "img/bg3.png",
+  "img/bg4.png",
+  "img/bg5.png"
 ];
 
 let bgIndex = 0;
