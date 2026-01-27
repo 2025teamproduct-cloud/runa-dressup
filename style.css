@@ -112,6 +112,7 @@ body {
 .result-canvas {
   width: 100%;
   max-width: 420px;
+  height: 630px;
   aspect-ratio: 1480 / 2092;
   background-size: contain;
   background-repeat: no-repeat;
@@ -128,13 +129,3 @@ body {
   height: auto;
 }
 
-/* パレットとリザルトの高さを揃える */
-.palette {
-  height: 100%;
-}
-
-/* bg キャンバスをパレットと同じ高さにする */
-.result-canvas {
-  height: 100%;
-  width: auto;
-}
