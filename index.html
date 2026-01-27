@@ -2,34 +2,33 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>簡易着せ替えサンプル</title>
+<title>Dress Up</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div class="app">
+
+  <!-- ジャンル -->
+  <div class="genres">
+    <div class="genre active">ワンピース</div>
+    <div class="genre">トップス</div>
+    <div class="genre">ボトムス</div>
+    <div class="genre">インナー</div>
+    <div class="genre">シューズ</div>
+  </div>
+
   <!-- パレット -->
   <div class="palette">
-    <div class="section">
-      <h3>背景</h3>
-      <input type="file" class="upload" id="baseUpload" accept="image/*">
-      <div class="grid" id="baseList"></div>
-    </div>
-
-    <div class="section">
-      <h3>着せ替え</h3>
-      <input type="file" class="upload" id="itemUpload" accept="image/*">
-      <div class="grid" id="itemList"></div>
-    </div>
+    <button id="loadFolder" class="load-btn">＋</button>
+    <div class="grid" id="itemGrid"></div>
   </div>
 
   <!-- リザルト -->
   <div class="result">
-    <div class="preview" id="preview">
-      <img id="previewBase">
-      <img id="previewItem">
-    </div>
+    <img id="resultImage">
   </div>
+
 </div>
 
 <script src="script.js"></script>
