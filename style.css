@@ -4,23 +4,22 @@ body {
   font-family: sans-serif;
 }
 
-/* 外枠 */
+/* 外周余白 */
 .wrapper {
   padding: 40px;
   box-sizing: border-box;
 }
 
-/* アプリ本体 */
+/* アプリ全体 */
 .app {
   display: flex;
   height: 80vh;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  background: #d9f3f4;
   position: relative;
 }
 
-/* リロード */
+/* 背景切り替えボタン（右上） */
 .reload-btn {
   position: absolute;
   top: 10px;
@@ -33,7 +32,6 @@ body {
   font-size: 20px;
   cursor: pointer;
 }
-
 
 /* ジャンル */
 .genres {
@@ -58,7 +56,7 @@ body {
   transform: translateX(-10px);
 }
 
-/* パレット */
+/* パレット（指定変更反映） */
 .palette {
   background: #ff8fb1;
   margin: 0 20px;
@@ -67,6 +65,7 @@ body {
   position: relative;
 }
 
+/* フォルダ読み込みボタン */
 .load-btn {
   position: absolute;
   bottom: 10px;
@@ -78,8 +77,10 @@ body {
   height: 40px;
   font-size: 24px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
+/* グリッド */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
