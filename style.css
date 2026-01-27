@@ -1,25 +1,86 @@
-body {
-  margin: 0;
-  background: #d9f3f4;
-  font-family: sans-serif;
-}
-
-/* 外周余白 */
-.wrapper {
-  padding: 40px;
+* {
   box-sizing: border-box;
 }
 
-/* アプリ全体 */
+body {
+  margin: 0;
+  background: #eee;
+  font-family: sans-serif;
+}
+
+/* 全体 */
 .app {
+  width: 90%;
+  margin: 30px auto;
   display: flex;
-  height: 80vh;
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 20px;
+}
+
+/* ジャンル */
+.genres {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.genre {
+  padding: 15px;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.genre.active {
+  background: #ff8fb1;
+  transform: translateX(-10px);
+}
+
+/* メイン */
+.main {
+  display: flex;
+  gap: 20px;
+}
+
+/* パレット */
+.palette {
+  background: #ff8fb1;
+  margin: 0 20px;
+  padding: 20px;
+  width: 570px;
   position: relative;
 }
 
-/* 背景切り替えボタン（右上） */
+#imageList img {
+  width: 80px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* リザルト */
+.result-wrapper {
+  position: relative;
+}
+
+/* bg 1480x2092 比率 */
+#result {
+  width: 370px;
+  height: 523px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 着せ替え画像 */
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* 背景切替ボタン */
 .reload-btn {
   position: absolute;
   top: 10px;
@@ -31,81 +92,4 @@ body {
   background: #fff;
   font-size: 20px;
   cursor: pointer;
-}
-
-/* ジャンル */
-.genres {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.genre {
-  writing-mode: vertical-rl;
-  background: #f2a3b8;
-  color: #fff;
-  padding: 10px;
-  border-radius: 6px;
-  opacity: 0.4;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.genre.active {
-  opacity: 1;
-  transform: translateX(-10px);
-}
-
-/* パレット（指定変更反映） */
-.palette {
-  background: #ff8fb1;
-  margin: 0 20px;
-  padding: 20px;
-  width: 630px;
-  position: relative;
-}
-
-/* フォルダ読み込みボタン */
-.load-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: none;
-  background: #fff;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* グリッド */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-.grid img {
-  background: #fff;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-/* リザルト */
-.result {
-  flex: 1;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.result img {
-  max-width: 80%;
-  max-height: 80%;
 }
