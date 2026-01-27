@@ -112,7 +112,7 @@ body {
 .result-canvas {
   width: 100%;
   max-width: 420px;
-  /* aspect-ratio: 1480 / 2092; */
+  aspect-ratio: 1480 / 2092;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
