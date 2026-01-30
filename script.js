@@ -44,7 +44,7 @@ const genreMap = {
 
 /* 画像リスト */
 const genreImages = {
-  "ワンピース": ["one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png",],
+  "ワンピース": ["one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","tops.png","tops.png","tops.png","tops.png","tops.png","tops.png",],
   "トップス": ["tops.png"],
   "ボトムス": ["bottoms.png"],
   "シューズ": ["shoes.png"],
