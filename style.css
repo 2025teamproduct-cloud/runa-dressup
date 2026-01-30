@@ -94,7 +94,7 @@ body {
   cursor: pointer;
 }
 
-/* パレット下部（grid の直下） */
+/* パレット下部 */
 .palette-footer {
   width: 100%;
   margin-top: 16px;
@@ -103,20 +103,11 @@ body {
   align-items: center;
 }
 
-/* 装飾画像 */
-.palette-base {
-  width: 100%;
-  display: block;
-}
-
-/* 画像ボタン */
+/* 次へボタン */
 .next-row-btn {
-  border-top: 20px;
   width: 300px;
-  /* margin-top: -40px;装飾画像に少し重ねたい場合 */
   cursor: pointer;
 }
-
 
 /* =========================
    リザルト
@@ -128,7 +119,7 @@ body {
   justify-content: center;
 }
 
-/* ★ palette と同サイズ感に拡大 */
+/* 表示キャンバス */
 .result-canvas {
   width: 630px;
   height: 1000px;
@@ -139,8 +130,11 @@ body {
   position: relative;
 }
 
-/* 着せ替えレイヤー */
-.result-canvas img {
+/* =========================
+   着せ替えレイヤー専用
+   ※ Undo ボタンに影響させない
+========================= */
+.result-canvas img[data-genre] {
   position: absolute;
   top: 0;
   left: 0;
@@ -148,13 +142,15 @@ body {
   height: auto;
 }
 
-/* Undo ボタン */
+/* =========================
+   Undo ボタン
+========================= */
 .undo-btn {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 10px;     /* 添付画像サイズ感 */
+  top: 12px;
+  left: 12px;
+  width: 56px;        /* 添付画像と同等サイズ感 */
   height: auto;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
 }
