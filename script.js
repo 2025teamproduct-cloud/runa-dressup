@@ -5,7 +5,7 @@ const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
-const paletteScrollBtn = document.getElementById("nextRowBtn");
+const paletteScrollBtn = document.getElementById("paletteScrollBtn");
 
 /* =========================
    背景管理
@@ -44,7 +44,7 @@ const genreMap = {
 
 /* 画像リスト */
 const genreImages = {
-  "ワンピース": ["one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","tops.png","tops.png","tops.png","tops.png","tops.png","tops.png",],
+  "ワンピース": ["one-piece.png",],
   "トップス": ["tops.png"],
   "ボトムス": ["bottoms.png"],
   "シューズ": ["shoes.png"],
