@@ -44,8 +44,14 @@ const genreMap = {
 
 /* 画像リスト */
 const genreImages = {
-  "ワンピース": ["one-piece.png",],
-  "トップス": ["tops1.png","tops2.png","tops3.png","tops4.png","tops5.png","tops6.png","tops7.png","tops8.png","tops9.png","tops10.png","tops11.png","tops12.png","tops13.png","tops14.png","tops15.png","tops16.png","tops17.png","tops18.png","tops19.png",],
+  "ワンピース": ["one-piece.png"],
+  "トップス": [
+    "tops1.png","tops2.png","tops3.png","tops4.png",
+    "tops5.png","tops6.png","tops7.png","tops8.png",
+    "tops9.png","tops10.png","tops11.png","tops12.png",
+    "tops13.png","tops14.png","tops15.png","tops16.png",
+    "tops17.png","tops18.png","tops19.png"
+  ],
   "ボトムス": ["bottoms.png"],
   "シューズ": ["shoes.png"],
   "髪型": ["hair.png"],
@@ -54,10 +60,11 @@ const genreImages = {
 };
 
 /* =========================
-   ページング管理
+   表示制御用インデックス
 ========================= */
-const ITEMS_PER_PAGE = 16;
-let currentPage = 0;
+const VISIBLE_COUNT = 16;   // 常に表示する枚数
+const SLIDE_COUNT = 4;     // 1回で送る枚数
+let startIndex = 0;
 
 /* =========================
    ジャンル切替
@@ -68,25 +75,27 @@ genres.forEach(genre => {
     genre.classList.add("active");
 
     currentGenre = genre.textContent.trim();
-    currentPage = 0;
-    grid.innerHTML = "";
+    startIndex = 0;
     renderGrid();
   });
 });
 
 /* =========================
-   パレット描画（ページ単位）
+   パレット描画（スライド方式）
 ========================= */
 function renderGrid() {
+  grid.innerHTML = "";
+
   const files = genreImages[currentGenre];
   const folder = genreMap[currentGenre];
   if (!files || !folder) return;
 
-  const start = currentPage * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-  const slice = files.slice(start, end);
+  const visibleFiles = files.slice(
+    startIndex,
+    startIndex + VISIBLE_COUNT
+  );
 
-  slice.forEach(file => {
+  visibleFiles.forEach(file => {
     const img = document.createElement("img");
     img.src = `${folder}/${file}`;
     img.alt = "";
@@ -117,15 +126,19 @@ function applyLayer(src, genre) {
 }
 
 /* =========================
-   画像ボタン押下で次ページ表示
+   画像ボタン押下時の挙動
+   ・先頭4枚を消す
+   ・残りを上に詰める
+   ・次の4枚を下に追加
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
   const files = genreImages[currentGenre];
-  const maxPage = Math.ceil(files.length / ITEMS_PER_PAGE) - 1;
+  if (!files) return;
 
-  if (currentPage >= maxPage) return;
+  // 次に4枚送れるかチェック
+  if (startIndex + VISIBLE_COUNT >= files.length) return;
 
-  currentPage++;
+  startIndex += SLIDE_COUNT;
   renderGrid();
 });
 
