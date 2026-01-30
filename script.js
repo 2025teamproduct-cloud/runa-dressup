@@ -42,15 +42,15 @@ const genreMap = {
   "その他": "other"
 };
 
-/* 各ジャンルの画像ファイル */
+/* フォルダ名と同一の画像名 */
 const genreImages = {
-  "ワンピース": ["1.png", "2.png"],
-  "トップス": ["1.png", "2.png"],
-  "ボトムス": ["1.png"],
-  "シューズ": ["1.png"],
-  "髪型": ["1.png"],
-  "目": ["1.png"],
-  "その他": ["1.png"]
+  "ワンピース": ["one-piece.png"],
+  "トップス": ["tops.png"],
+  "ボトムス": ["bottoms.png"],
+  "シューズ": ["shoes.png"],
+  "髪型": ["hair.png"],
+  "目": ["eye.png"],
+  "その他": ["other.png"]
 };
 
 /* =========================
@@ -109,11 +109,11 @@ function applyLayer(src, genre) {
 
 /* =========================
    パレットを「1列（4枚）」ずつ下へ送る
-   ・4列固定前提
+   ※ 現状は1枚のみでも破綻しない
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
   const items = grid.querySelectorAll("img");
-  if (items.length < 4) return;
+  if (items.length < 5) return;
 
   const firstRowTop = items[0].offsetTop;
   const secondRowTop = items[4].offsetTop;
