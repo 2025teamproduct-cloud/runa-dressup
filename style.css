@@ -113,13 +113,14 @@ body {
 }
 
 /* 1列送る画像ボタン */
-/* .next-row-btn {
+.next-row-btn {
   position: absolute;
-  bottom: 12px;
+  /* bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  cursor: pointer;
-} */
+  cursor: pointer; */
+  width: 300px;
+}
 
 /* =========================
    リザルト（bg 全体表示対応）
