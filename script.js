@@ -1,12 +1,9 @@
 const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
-const loadBtn = document.getElementById("loadFolder");
 const bgReloadBtn = document.getElementById("bgReload");
-
-/* ★ 正しい bg 表示先 */
 const resultCanvas = document.getElementById("resultCanvas");
 
-/* ===== 背景画像 ===== */
+/* ===== 背景 ===== */
 const backgrounds = [
   "img/bg1.jpg",
   "img/bg2.png",
@@ -16,25 +13,38 @@ const backgrounds = [
 ];
 
 let bgIndex = 0;
-
-/* 初期 bg 表示 */
 resultCanvas.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 
-/* bg 切り替え */
 bgReloadBtn.addEventListener("click", () => {
   bgIndex = (bgIndex + 1) % backgrounds.length;
   resultCanvas.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 });
 
-/* ===== ジャンル管理 ===== */
+/* ===== ジャンル定義 ===== */
 let currentGenre = "ワンピース";
 
+/* フォルダと画像定義 */
 const genreImages = {
-  "ワンピース": [],
-  "トップス": [],
-  "ボトムス": [],
-  "インナー": [],
-  "シューズ": []
+  "ワンピース": [
+    "one-piece/1.png",
+    "one-piece/2.png"
+  ],
+  "トップス": [
+    "tops/1.png",
+    "tops/2.png"
+  ],
+  "ボトムス": [
+    "bottoms/1.png"
+  ],
+  "インナー": [
+    "inner/1.png"
+  ],
+  "シューズ": [
+    "shoes/1.png"
+  ],
+  "ヘア": [
+    "hair/1.png"
+  ]
 };
 
 /* ジャンル切替 */
@@ -48,32 +58,12 @@ genres.forEach(genre => {
   });
 });
 
-/* フォルダ読み込み（ジャンル別） */
-loadBtn.addEventListener("click", async () => {
-  const dirHandle = await window.showDirectoryPicker();
-  const images = [];
-
-  for await (const entry of dirHandle.values()) {
-    if (
-      entry.kind === "file" &&
-      entry.name.match(/\.(png|jpg|jpeg|webp)$/i)
-    ) {
-      const file = await entry.getFile();
-      const url = URL.createObjectURL(file);
-      images.push(url);
-    }
-  }
-
-  genreImages[currentGenre] = images;
-  renderGrid();
-});
-
-/* グリッド描画 */
+/* パレット描画 */
 function renderGrid() {
   grid.innerHTML = "";
 
   const images = genreImages[currentGenre];
-  if (!images || images.length === 0) return;
+  if (!images) return;
 
   images.forEach(src => {
     const img = document.createElement("img");
@@ -87,7 +77,7 @@ function renderGrid() {
   });
 }
 
-/* 着せ替えレイヤー反映 */
+/* レイヤー反映 */
 function applyLayer(src, genre) {
   let layer = resultCanvas.querySelector(
     `img[data-genre="${genre}"]`
@@ -101,3 +91,6 @@ function applyLayer(src, genre) {
 
   layer.src = src;
 }
+
+/* 初期描画 */
+renderGrid();
