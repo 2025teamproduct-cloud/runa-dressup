@@ -4,13 +4,11 @@ body {
   font-family: sans-serif;
 }
 
-/* 外周余白 */
 .wrapper {
   padding: 40px;
   box-sizing: border-box;
 }
 
-/* アプリ全体 */
 .app {
   display: flex;
   height: 80vh;
@@ -19,7 +17,9 @@ body {
   position: relative;
 }
 
-/* 背景切り替えボタン（右上） */
+/* =========================
+   背景切り替え
+========================= */
 .reload-btn {
   position: absolute;
   top: 10px;
@@ -33,14 +33,15 @@ body {
   cursor: pointer;
 }
 
-/* ジャンル */
+/* =========================
+   ジャンル
+========================= */
 .genres {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* 各ジャンル共通サイズにする */
 .genre {
   writing-mode: vertical-rl;
   background: #f2a3b8;
@@ -51,7 +52,6 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   font-size: 13px;
-
   height: 120px;
   display: flex;
   align-items: center;
@@ -63,27 +63,25 @@ body {
   transform: translateX(-10px);
 }
 
-/* パレット（指定変更反映） */
+/* =========================
+   パレット
+========================= */
 .palette {
   background: #ff8fb1;
   margin: 0 20px;
   padding: 20px;
   width: 630px;
-  position: relative;
-
-  /* ★ 追加：下部固定構造用 */
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  box-sizing: border-box;
 }
 
-/* グリッド */
+/* アイテム表示エリア */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-
-  /* ★ 追加：スクロール対象をここに限定 */
   flex: 1;
   overflow: hidden;
 }
@@ -97,50 +95,45 @@ body {
 }
 
 /* =========================
-   パレット下部（装飾＋ボタン）
+   パレット下部固定エリア
 ========================= */
-
 .palette-footer {
   position: relative;
   width: 100%;
   margin-top: 10px;
+  flex-shrink: 0;
 }
 
-/* 下部装飾画像 */
 .palette-base {
   width: 100%;
   display: block;
 }
 
-/* 1列送る画像ボタン */
+/* 画像ボタンを常に下固定 */
 .next-row-btn {
   position: absolute;
-  /* bottom: 12px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  cursor: pointer; */
-  width: 500px;
+  width: 480px;
+  cursor: pointer;
 }
 
 /* =========================
-   リザルト（bg 全体表示対応）
+   リザルト
 ========================= */
-
-/* リザルト外枠 */
 .result {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
 }
 
-/* bg 表示用キャンバス（1480×2092 比率） */
+/* ★ palette と同サイズ感に拡大 */
 .result-canvas {
-  width: 100%;
-  max-width: 420px;
-  height: 630px;
-  aspect-ratio: 1480 / 2092;
+  width: 630px;
+  height: 100%;
+  max-height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
