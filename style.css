@@ -40,6 +40,7 @@ body {
   gap: 10px;
 }
 
+/* 各ジャンル共通サイズにする */
 .genre {
   writing-mode: vertical-rl;
   background: #f2a3b8;
@@ -49,6 +50,12 @@ body {
   opacity: 0.4;
   cursor: pointer;
   transition: all 0.2s;
+
+  /* ★ 追加 */
+  height: 120px;              /* ← 最長文字に合わせた固定値 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .genre.active {
