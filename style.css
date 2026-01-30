@@ -112,7 +112,7 @@ body {
 /* 画像ボタン */
 .next-row-btn {
   border-top: 20px;
-  width: 380px;
+  width: 200px;
   /* margin-top: -40px;装飾画像に少し重ねたい場合 */
   cursor: pointer;
 }
