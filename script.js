@@ -5,6 +5,7 @@ const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
+const paletteScrollBtn = document.getElementById("paletteScrollBtn");
 
 /* =========================
    背景管理
@@ -30,10 +31,6 @@ bgReloadBtn.addEventListener("click", () => {
 ========================= */
 let currentGenre = "ワンピース";
 
-/*
-  ジャンル名 → フォルダ名対応
-  ※ フォルダはすべてプロジェクト直下
-*/
 const genreMap = {
   "ワンピース": "one-piece",
   "トップス": "tops",
@@ -44,18 +41,14 @@ const genreMap = {
   "その他": "other"
 };
 
-/*
-  各ジャンルの画像一覧
-  ※ 追加したい場合は配列にファイル名を足すだけ
-*/
 const genreImages = {
-  "ワンピース": ["one-piece.png", "one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png",],
-  "トップス": ["tops.png", "2.png"],
-  "ボトムス": ["bottoms.png"],
-  "シューズ": ["shoes.png"],
-  "髪型": ["hair.png"],
-  "目": ["eye.png"],
-  "その他": ["other.png"]
+  "ワンピース": ["1.png", "2.png"],
+  "トップス": ["1.png", "2.png"],
+  "ボトムス": ["1.png"],
+  "シューズ": ["1.png"],
+  "髪型": ["1.png"],
+  "目": ["1.png"],
+  "その他": ["1.png"]
 };
 
 /* =========================
@@ -67,6 +60,7 @@ genres.forEach(genre => {
     genre.classList.add("active");
 
     currentGenre = genre.textContent.trim();
+    grid.scrollTop = 0; // ジャンル切替時は先頭へ
     renderGrid();
   });
 });
@@ -110,6 +104,24 @@ function applyLayer(src, genre) {
 
   layer.src = src;
 }
+
+/* =========================
+   パレットを「1列（4枚）」ずつ下へ送る
+   4×4表示を基準
+========================= */
+paletteScrollBtn.addEventListener("click", () => {
+  const firstItem = grid.querySelector("img");
+  if (!firstItem) return;
+
+  const itemHeight = firstItem.offsetHeight;
+  const gap = 10; // CSSのgrid gap
+  const scrollAmount = itemHeight + gap;
+
+  grid.scrollBy({
+    top: scrollAmount,
+    behavior: "smooth"
+  });
+});
 
 /* =========================
    初期表示

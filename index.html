@@ -20,22 +20,26 @@
       <div class="genre">ボトムス</div>
       <div class="genre">シューズ</div>
       <div class="genre">髪型</div>
-      <div class="genre">目</div> 
+      <div class="genre">目</div>
       <div class="genre">その他</div>
-
     </div>
 
     <!-- パレット -->
     <div class="palette">
-      <button id="loadFolder" class="load-btn">＋</button>
+      <!-- パレットを1列ずつ送る画像ボタン -->
+      <img
+        src="img/scroll-down.png"
+        alt="scroll"
+        id="paletteScrollBtn"
+        class="load-btn"
+      >
+
       <div class="grid" id="itemGrid"></div>
     </div>
 
     <!-- リザルト -->
     <div class="result">
-      <div class="result-canvas" id="resultCanvas">
-        <!-- 着せ替えレイヤーはここに追加 -->
-      </div>
+      <div class="result-canvas" id="resultCanvas"></div>
     </div>
 
   </div>
