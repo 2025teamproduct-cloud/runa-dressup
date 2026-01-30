@@ -31,6 +31,7 @@ bgReloadBtn.addEventListener("click", () => {
 ========================= */
 let currentGenre = "ワンピース";
 
+/* 表示名 → フォルダ名 */
 const genreMap = {
   "ワンピース": "one-piece",
   "トップス": "tops",
@@ -41,6 +42,7 @@ const genreMap = {
   "その他": "other"
 };
 
+/* 各ジャンルの画像ファイル */
 const genreImages = {
   "ワンピース": ["1.png", "2.png"],
   "トップス": ["1.png", "2.png"],
@@ -60,7 +62,7 @@ genres.forEach(genre => {
     genre.classList.add("active");
 
     currentGenre = genre.textContent.trim();
-    grid.scrollTop = 0; // ジャンル切替時は先頭へ
+    grid.scrollTop = 0;
     renderGrid();
   });
 });
@@ -72,13 +74,13 @@ function renderGrid() {
   grid.innerHTML = "";
 
   const files = genreImages[currentGenre];
-  if (!files) return;
-
   const folder = genreMap[currentGenre];
+  if (!files || !folder) return;
 
   files.forEach(file => {
     const img = document.createElement("img");
     img.src = `${folder}/${file}`;
+    img.alt = "";
 
     img.addEventListener("click", () => {
       applyLayer(img.src, currentGenre);
@@ -107,15 +109,15 @@ function applyLayer(src, genre) {
 
 /* =========================
    パレットを「1列（4枚）」ずつ下へ送る
-   4×4表示を基準
+   ・4列固定前提
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
-  const firstItem = grid.querySelector("img");
-  if (!firstItem) return;
+  const items = grid.querySelectorAll("img");
+  if (items.length < 4) return;
 
-  const itemHeight = firstItem.offsetHeight;
-  const gap = 10; // CSSのgrid gap
-  const scrollAmount = itemHeight + gap;
+  const firstRowTop = items[0].offsetTop;
+  const secondRowTop = items[4].offsetTop;
+  const scrollAmount = secondRowTop - firstRowTop;
 
   grid.scrollBy({
     top: scrollAmount,
