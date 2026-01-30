@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>Dress Up</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Dress Up</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="wrapper">
   <div class="app">
 
-    <!-- 背景切り替えボタン -->
+    <!-- 背景切り替え -->
     <button id="bgReload" class="reload-btn">↻</button>
 
     <!-- ジャンル -->
@@ -26,18 +26,16 @@
 
     <!-- パレット -->
     <div class="palette">
-      <!-- パレットを1列ずつ送る画像ボタン -->
-      <img
-        src="img/scroll-down.png"
-        alt="scroll"
-        id="paletteScrollBtn"
-        class="load-btn"
-      >
-
       <div class="grid" id="itemGrid"></div>
+
+      <!-- 下部装飾＋画像ボタン -->
+      <div class="palette-footer">
+        <img src="img/palette_base.png" class="palette-base" alt="">
+        <img src="img/next_row.png" id="nextRowBtn" class="next-row-btn" alt="">
+      </div>
     </div>
 
-    <!-- リザルト -->
+    <!-- 結果 -->
     <div class="result">
       <div class="result-canvas" id="resultCanvas"></div>
     </div>
