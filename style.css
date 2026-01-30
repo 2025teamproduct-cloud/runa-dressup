@@ -148,7 +148,7 @@ body {
 .undo-btn {
   position: absolute;
   top: 12px;
-  left: 12px;
+  /* left: 12px; */
   width: 56px;        /* 添付画像と同等サイズ感 */
   height: auto;
   cursor: pointer;
