@@ -131,7 +131,7 @@ body {
 /* ★ palette と同サイズ感に拡大 */
 .result-canvas {
   width: 630px;
-  height: 720px;
+  height: 1500px;
   max-height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
