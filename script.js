@@ -5,7 +5,7 @@ const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
-const paletteScrollBtn = document.getElementById("paletteScrollBtn");
+const paletteScrollBtn = document.getElementById("nextRowBtn");
 
 /* =========================
    背景管理
@@ -42,16 +42,22 @@ const genreMap = {
   "その他": "other"
 };
 
-/* フォルダ名と同一の画像名 */
+/* 画像リスト */
 const genreImages = {
   "ワンピース": ["one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png","one-piece.png",],
-  "トップス": ["tops.png",],
-  "ボトムス": ["bottoms.png",],
-  "シューズ": ["shoes.png",],
-  "髪型": ["hair.png",],
-  "目": ["eye.png",],
+  "トップス": ["tops.png"],
+  "ボトムス": ["bottoms.png"],
+  "シューズ": ["shoes.png"],
+  "髪型": ["hair.png"],
+  "目": ["eye.png"],
   "その他": ["other.png"]
 };
+
+/* =========================
+   ページング管理
+========================= */
+const ITEMS_PER_PAGE = 16;
+let currentPage = 0;
 
 /* =========================
    ジャンル切替
@@ -62,22 +68,25 @@ genres.forEach(genre => {
     genre.classList.add("active");
 
     currentGenre = genre.textContent.trim();
-    grid.scrollTop = 0;
+    currentPage = 0;
+    grid.innerHTML = "";
     renderGrid();
   });
 });
 
 /* =========================
-   パレット描画
+   パレット描画（ページ単位）
 ========================= */
 function renderGrid() {
-  grid.innerHTML = "";
-
   const files = genreImages[currentGenre];
   const folder = genreMap[currentGenre];
   if (!files || !folder) return;
 
-  files.forEach(file => {
+  const start = currentPage * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const slice = files.slice(start, end);
+
+  slice.forEach(file => {
     const img = document.createElement("img");
     img.src = `${folder}/${file}`;
     img.alt = "";
@@ -108,21 +117,16 @@ function applyLayer(src, genre) {
 }
 
 /* =========================
-   パレットを「1列（4枚）」ずつ下へ送る
-   ※ 現状は1枚のみでも破綻しない
+   画像ボタン押下で次ページ表示
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
-  const items = grid.querySelectorAll("img");
-  if (items.length < 5) return;
+  const files = genreImages[currentGenre];
+  const maxPage = Math.ceil(files.length / ITEMS_PER_PAGE) - 1;
 
-  const firstRowTop = items[0].offsetTop;
-  const secondRowTop = items[4].offsetTop;
-  const scrollAmount = secondRowTop - firstRowTop;
+  if (currentPage >= maxPage) return;
 
-  grid.scrollBy({
-    top: scrollAmount,
-    behavior: "smooth"
-  });
+  currentPage++;
+  renderGrid();
 });
 
 /* =========================
