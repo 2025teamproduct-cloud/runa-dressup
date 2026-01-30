@@ -94,30 +94,28 @@ body {
   cursor: pointer;
 }
 
-/* =========================
-   パレット下部固定エリア
-========================= */
+/* パレット下部（grid の直下） */
 .palette-footer {
-  position: relative;
   width: 100%;
-  margin-top: 10px;
-  flex-shrink: 0;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* 装飾画像 */
 .palette-base {
   width: 100%;
   display: block;
 }
 
-/* 画像ボタンを常に下固定 */
+/* 画像ボタン */
 .next-row-btn {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
   width: 480px;
+  margin-top: -40px; /* 装飾画像に少し重ねたい場合 */
   cursor: pointer;
 }
+
 
 /* =========================
    リザルト
