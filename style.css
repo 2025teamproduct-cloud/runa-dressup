@@ -52,8 +52,7 @@ body {
   transition: all 0.2s;
   font-size: 13px;
 
-  /* ★ 追加 */
-  height: 120px;              /* ← 最長文字に合わせた固定値 */
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,21 +70,11 @@ body {
   padding: 20px;
   width: 630px;
   position: relative;
-}
 
-/* フォルダ読み込みボタン */
-.load-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: none;
-  background: #fff;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  border-radius: 50%;
-  cursor: pointer;
+  /* ★ 追加：下部固定構造用 */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* グリッド */
@@ -93,6 +82,10 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+
+  /* ★ 追加：スクロール対象をここに限定 */
+  flex: 1;
+  overflow: hidden;
 }
 
 .grid img {
@@ -100,6 +93,31 @@ body {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
+  cursor: pointer;
+}
+
+/* =========================
+   パレット下部（装飾＋ボタン）
+========================= */
+
+.palette-footer {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* 下部装飾画像 */
+.palette-base {
+  width: 100%;
+  display: block;
+}
+
+/* 1列送る画像ボタン */
+.next-row-btn {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
 }
 
@@ -136,4 +154,3 @@ body {
   width: 100%;
   height: auto;
 }
-
