@@ -45,7 +45,7 @@ const genreMap = {
 /* 画像リスト */
 const genreImages = {
   "ワンピース": ["one-piece.png",],
-  "トップス": ["tops.png"],
+  "トップス": ["tops1.png","tops2.png","tops3.png","tops4.png","tops5.png","tops6.png","tops7.png","tops8.png","tops9.png","tops10.png","tops11.png","tops12.png","tops13.png","tops14.png","tops15.png","tops16.png","tops17.png","tops18.png","tops19.png",],
   "ボトムス": ["bottoms.png"],
   "シューズ": ["shoes.png"],
   "髪型": ["hair.png"],
