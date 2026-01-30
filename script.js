@@ -1,9 +1,14 @@
+/* =========================
+   要素取得
+========================= */
 const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
 
-/* ===== 背景 ===== */
+/* =========================
+   背景管理
+========================= */
 const backgrounds = [
   "img/bg1.jpg",
   "img/bg2.png",
@@ -20,34 +25,42 @@ bgReloadBtn.addEventListener("click", () => {
   resultCanvas.style.backgroundImage = `url(${backgrounds[bgIndex]})`;
 });
 
-/* ===== ジャンル定義 ===== */
+/* =========================
+   ジャンル管理
+========================= */
 let currentGenre = "ワンピース";
 
-/* フォルダと画像定義 */
-const genreImages = {
-  "ワンピース": [
-    "one-piece/1.png",
-    "one-piece/2.png"
-  ],
-  "トップス": [
-    "tops/1.png",
-    "tops/2.png"
-  ],
-  "ボトムス": [
-    "bottoms/1.png"
-  ],
-  "インナー": [
-    "inner/1.png"
-  ],
-  "シューズ": [
-    "shoes/1.png"
-  ],
-  "ヘア": [
-    "hair/1.png"
-  ]
+/*
+  ジャンル名 → フォルダ名対応
+  ※ フォルダはすべてプロジェクト直下
+*/
+const genreMap = {
+  "ワンピース": "one-piece",
+  "トップス": "tops",
+  "ボトムス": "bottoms",
+  "シューズ": "shoes",
+  "髪型": "hair",
+  "目": "eye",
+  "その他": "other"
 };
 
-/* ジャンル切替 */
+/*
+  各ジャンルの画像一覧
+  ※ 追加したい場合は配列にファイル名を足すだけ
+*/
+const genreImages = {
+  "ワンピース": ["one-piece.png", "2.png"],
+  "トップス": ["tops.png", "2.png"],
+  "ボトムス": ["bottoms.png"],
+  "シューズ": ["shoes.png"],
+  "髪型": ["hair.png"],
+  "目": ["eye.png"],
+  "その他": ["other.png"]
+};
+
+/* =========================
+   ジャンル切替
+========================= */
 genres.forEach(genre => {
   genre.addEventListener("click", () => {
     genres.forEach(g => g.classList.remove("active"));
@@ -58,26 +71,32 @@ genres.forEach(genre => {
   });
 });
 
-/* パレット描画 */
+/* =========================
+   パレット描画
+========================= */
 function renderGrid() {
   grid.innerHTML = "";
 
-  const images = genreImages[currentGenre];
-  if (!images) return;
+  const files = genreImages[currentGenre];
+  if (!files) return;
 
-  images.forEach(src => {
+  const folder = genreMap[currentGenre];
+
+  files.forEach(file => {
     const img = document.createElement("img");
-    img.src = src;
+    img.src = `${folder}/${file}`;
 
     img.addEventListener("click", () => {
-      applyLayer(src, currentGenre);
+      applyLayer(img.src, currentGenre);
     });
 
     grid.appendChild(img);
   });
 }
 
-/* レイヤー反映 */
+/* =========================
+   レイヤー反映
+========================= */
 function applyLayer(src, genre) {
   let layer = resultCanvas.querySelector(
     `img[data-genre="${genre}"]`
@@ -92,5 +111,7 @@ function applyLayer(src, genre) {
   layer.src = src;
 }
 
-/* 初期描画 */
+/* =========================
+   初期表示
+========================= */
 renderGrid();
