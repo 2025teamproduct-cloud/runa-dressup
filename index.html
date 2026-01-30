@@ -30,9 +30,8 @@
       <!-- アイテム表示グリッド -->
       <div class="grid" id="itemGrid"></div>
 
-      <!-- パレット最下部：装飾＋画像ボタン -->
+      <!-- パレット最下部：画像ボタン -->
       <div class="palette-footer">
-        <!-- <img src="img/palette_base.png" class="palette-base" alt=""> -->
         <img
           src="img/scroll-down.png"
           id="paletteScrollBtn"
@@ -45,7 +44,17 @@
 
     <!-- 結果 -->
     <div class="result">
-      <div class="result-canvas" id="resultCanvas"></div>
+      <div class="result-canvas" id="resultCanvas">
+
+        <!-- ★ Undo ボタン（HTMLで明示的に挿入） -->
+        <img
+          src="img/undo.png"
+          id="undoBtn"
+          class="undo-btn"
+          alt=""
+        >
+
+      </div>
     </div>
 
   </div>

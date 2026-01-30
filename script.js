@@ -6,6 +6,7 @@ const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
 const paletteScrollBtn = document.getElementById("paletteScrollBtn");
+const undoBtn = document.getElementById("undoBtn");
 
 /* =========================
    背景管理
@@ -60,11 +61,16 @@ const genreImages = {
 };
 
 /* =========================
-   表示制御用インデックス
+   表示制御
 ========================= */
-const VISIBLE_COUNT = 16;   // 常に表示する枚数
-const SLIDE_COUNT = 4;     // 1回で送る枚数
+const VISIBLE_COUNT = 16;
+const SLIDE_COUNT = 4;
 let startIndex = 0;
+
+/* =========================
+   Undo 管理（履歴）
+========================= */
+let historyStack = [];
 
 /* =========================
    ジャンル切替
@@ -81,7 +87,7 @@ genres.forEach(genre => {
 });
 
 /* =========================
-   パレット描画（スライド方式）
+   パレット描画
 ========================= */
 function renderGrid() {
   grid.innerHTML = "";
@@ -90,28 +96,35 @@ function renderGrid() {
   const folder = genreMap[currentGenre];
   if (!files || !folder) return;
 
-  const visibleFiles = files.slice(
-    startIndex,
-    startIndex + VISIBLE_COUNT
-  );
+  files
+    .slice(startIndex, startIndex + VISIBLE_COUNT)
+    .forEach(file => {
+      const img = document.createElement("img");
+      img.src = `${folder}/${file}`;
 
-  visibleFiles.forEach(file => {
-    const img = document.createElement("img");
-    img.src = `${folder}/${file}`;
-    img.alt = "";
+      img.addEventListener("click", () => {
+        applyLayer(img.src, currentGenre);
+      });
 
-    img.addEventListener("click", () => {
-      applyLayer(img.src, currentGenre);
+      grid.appendChild(img);
     });
-
-    grid.appendChild(img);
-  });
 }
 
 /* =========================
    レイヤー反映
 ========================= */
 function applyLayer(src, genre) {
+  const existing = resultCanvas.querySelectorAll(
+    'img[data-genre]'
+  );
+
+  historyStack.push(
+    Array.from(existing).map(img => ({
+      genre: img.dataset.genre,
+      src: img.src
+    }))
+  );
+
   let layer = resultCanvas.querySelector(
     `img[data-genre="${genre}"]`
   );
@@ -126,16 +139,30 @@ function applyLayer(src, genre) {
 }
 
 /* =========================
-   画像ボタン押下時の挙動
-   ・先頭4枚を消す
-   ・残りを上に詰める
-   ・次の4枚を下に追加
+   Undo 処理
+========================= */
+undoBtn.addEventListener("click", () => {
+  if (historyStack.length === 0) return;
+
+  const lastState = historyStack.pop();
+
+  resultCanvas
+    .querySelectorAll('img[data-genre]')
+    .forEach(img => img.remove());
+
+  lastState.forEach(item => {
+    const img = document.createElement("img");
+    img.dataset.genre = item.genre;
+    img.src = item.src;
+    resultCanvas.appendChild(img);
+  });
+});
+
+/* =========================
+   スクロールボタン
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
   const files = genreImages[currentGenre];
-  if (!files) return;
-
-  // 次に4枚送れるかチェック
   if (startIndex + VISIBLE_COUNT >= files.length) return;
 
   startIndex += SLIDE_COUNT;
