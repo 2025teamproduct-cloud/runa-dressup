@@ -153,7 +153,7 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 60px;     /* 添付画像サイズ感 */
+  width: 10px;     /* 添付画像サイズ感 */
   height: auto;
   cursor: pointer;
   z-index: 10;
