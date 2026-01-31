@@ -27,10 +27,20 @@
     <!-- パレット -->
     <div class="palette">
 
+      <!-- ★ パレット上部：画像ボタン（上に4枚） -->
+      <div class="palette-header">
+        <img
+          src="img/scroll-down.png"
+          id="paletteScrollUpBtn"
+          class="prev-row-btn"
+          alt=""
+        >
+      </div>
+
       <!-- アイテム表示グリッド -->
       <div class="grid" id="itemGrid"></div>
 
-      <!-- パレット最下部：画像ボタン -->
+      <!-- パレット下部：画像ボタン（下に4枚） -->
       <div class="palette-footer">
         <img
           src="img/scroll-down.png"
@@ -46,7 +56,7 @@
     <div class="result">
       <div class="result-canvas" id="resultCanvas">
 
-        <!-- ★ Undo ボタン（HTMLで明示的に挿入） -->
+        <!-- Undo ボタン -->
         <img
           src="img/undo.png"
           id="undoBtn"

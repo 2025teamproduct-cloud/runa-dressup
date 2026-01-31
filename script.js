@@ -5,7 +5,8 @@ const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
-const paletteScrollBtn = document.getElementById("paletteScrollBtn");
+const paletteScrollBtn = document.getElementById("paletteScrollBtn"); // 下
+const paletteScrollUpBtn = document.getElementById("paletteScrollUpBtn"); // 上（追加）
 const undoBtn = document.getElementById("undoBtn");
 
 /* =========================
@@ -68,7 +69,7 @@ const SLIDE_COUNT = 4;
 let startIndex = 0;
 
 /* =========================
-   Undo 管理（履歴）
+   Undo 管理
 ========================= */
 let historyStack = [];
 
@@ -114,9 +115,7 @@ function renderGrid() {
    レイヤー反映
 ========================= */
 function applyLayer(src, genre) {
-  const existing = resultCanvas.querySelectorAll(
-    'img[data-genre]'
-  );
+  const existing = resultCanvas.querySelectorAll('img[data-genre]');
 
   historyStack.push(
     Array.from(existing).map(img => ({
@@ -139,7 +138,7 @@ function applyLayer(src, genre) {
 }
 
 /* =========================
-   Undo 処理
+   Undo
 ========================= */
 undoBtn.addEventListener("click", () => {
   if (historyStack.length === 0) return;
@@ -159,13 +158,23 @@ undoBtn.addEventListener("click", () => {
 });
 
 /* =========================
-   スクロールボタン
+   スクロール（下に4枚）
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
   const files = genreImages[currentGenre];
   if (startIndex + VISIBLE_COUNT >= files.length) return;
 
   startIndex += SLIDE_COUNT;
+  renderGrid();
+});
+
+/* =========================
+   スクロール（上に4枚）
+========================= */
+paletteScrollUpBtn.addEventListener("click", () => {
+  if (startIndex === 0) return;
+
+  startIndex = Math.max(0, startIndex - SLIDE_COUNT);
   renderGrid();
 });
 
