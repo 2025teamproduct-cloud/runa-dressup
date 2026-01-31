@@ -208,3 +208,110 @@ body {
   cursor: pointer;
   z-index: 20;
 }
+
+/* =========================
+   iPad 横向き（1024px〜1180px）
+========================= */
+@media screen and (max-width: 1180px) and (min-width: 900px) {
+
+  .wrapper {
+    padding: 24px;
+  }
+
+  .app {
+    height: auto;
+  }
+
+  .palette {
+    width: 520px;
+    height: 640px;
+    padding: 16px;
+  }
+
+  .grid {
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  .prev-row-btn,
+  .next-row-btn {
+    width: 240px;
+  }
+
+  .result-canvas {
+    width: 520px;
+    height: 820px;
+  }
+
+  .genre {
+    height: 100px;
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   iPad 縦向き（〜899px）
+========================= */
+@media screen and (max-width: 899px) {
+
+  .wrapper {
+    padding: 20px;
+  }
+
+  .app {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  /* ジャンルを横並びに変更 */
+  .genres {
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .genre {
+    writing-mode: horizontal-tb;
+    height: auto;
+    width: auto;
+    padding: 8px 10px;
+    font-size: 12px;
+    transform: none;
+  }
+
+  .genre.active {
+    transform: none;
+  }
+
+  .palette {
+    width: 100%;
+    max-width: 640px;
+    height: 620px;
+    margin: 0;
+  }
+
+  .grid {
+    gap: 10px;
+    padding-top: 20px;
+  }
+
+  .prev-row-btn,
+  .next-row-btn {
+    width: 220px;
+  }
+
+  .result {
+    margin-top: 24px;
+  }
+
+  .result-canvas {
+    width: 100%;
+    max-width: 640px;
+    height: 900px;
+  }
+
+  .undo-btn {
+    width: 48px;
+  }
+}
