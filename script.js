@@ -63,7 +63,7 @@ const genreImages = {
 /* =========================
    表示制御
 ========================= */
-const VISIBLE_COUNT = 16;
+const VISIBLE_COUNT = 12;
 const SLIDE_COUNT = 4;
 let startIndex = 0;
 
