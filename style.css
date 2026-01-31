@@ -77,6 +77,15 @@ body {
   box-sizing: border-box;
 }
 
+/* パレット上部 */
+.palette-header {
+  width: 100%;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* アイテム表示エリア */
 .grid {
   display: grid;
@@ -103,8 +112,9 @@ body {
   align-items: center;
 }
 
-/* 次へボタン */
-.next-row-btn {
+/* 上下スクロールボタン共通 */
+.next-row-btn,
+.prev-row-btn {
   width: 300px;
   cursor: pointer;
 }
@@ -119,7 +129,6 @@ body {
   justify-content: center;
 }
 
-/* 表示キャンバス */
 .result-canvas {
   width: 630px;
   height: 1000px;
@@ -130,10 +139,7 @@ body {
   position: relative;
 }
 
-/* =========================
-   着せ替えレイヤー専用
-   ※ Undo ボタンに影響させない
-========================= */
+/* 着せ替えレイヤー専用 */
 .result-canvas img[data-genre] {
   position: absolute;
   top: 0;
@@ -142,14 +148,11 @@ body {
   height: auto;
 }
 
-/* =========================
-   Undo ボタン
-========================= */
+/* Undo ボタン */
 .undo-btn {
   position: absolute;
   top: 12px;
-  /* left: 12px; */
-  width: 56px;        /* 添付画像と同等サイズ感 */
+  width: 56px;
   height: auto;
   cursor: pointer;
   z-index: 20;
