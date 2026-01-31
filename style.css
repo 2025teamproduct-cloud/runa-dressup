@@ -77,21 +77,37 @@ body {
   box-sizing: border-box;
 }
 
-/* パレット上部 */
+/* パレット上部（固定） */
 .palette-header {
-  width: 100%;
-  margin-bottom: 16px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* アイテム表示エリア */
+/* パレット下部（固定） */
+.palette-footer {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 上下スクロールボタン */
+.prev-row-btn,
+.next-row-btn {
+  width: 300px;
+  cursor: pointer;
+}
+
+/* =========================
+   アイテム表示エリア（中央可変）
+========================= */
 .grid {
+  flex: 1;                     /* 残り高さのみ使用 */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  flex: 1;
   overflow: hidden;
 }
 
@@ -102,6 +118,7 @@ body {
   object-fit: contain;
   cursor: pointer;
 }
+
 
 /* パレット下部 */
 .palette-footer {
