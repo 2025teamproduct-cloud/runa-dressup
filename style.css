@@ -91,6 +91,7 @@ body {
 .next-row-btn {
   width: 300px;
   cursor: pointer;
+  z-index: 2;
 }
 
 /* =========================
