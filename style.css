@@ -102,7 +102,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding-top: 30px;
 
   position: relative;
@@ -112,7 +112,7 @@ body {
 
 .grid img {
   background: #fff;
-  width: 95%;
+  width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   cursor: pointer;
