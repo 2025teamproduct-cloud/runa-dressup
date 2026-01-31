@@ -91,7 +91,7 @@ body {
 .next-row-btn {
   width: 300px;
   cursor: pointer;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 /* =========================
@@ -112,7 +112,7 @@ body {
 
 .grid img {
   background: #fff;
-  width: 100%;
+  width: 95%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   cursor: pointer;
