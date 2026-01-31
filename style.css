@@ -212,30 +212,51 @@ body {
 /* =========================
    iPad 横向き（1024px〜1180px）
 ========================= */
-@media screen and (max-width: 1180px) and (min-width: 900px) {
+@media screen and (max-width: 1024px) {
 
   .wrapper {
-    padding: 24px;
+    padding: 20px;
   }
 
   .app {
     height: auto;
+    align-items: flex-start;
   }
 
+  /* ===== ジャンル ===== */
+  .genres {
+    gap: 8px;
+  }
+
+  .genre {
+    height: 100px;
+    font-size: 12px;
+  }
+
+  /* ===== パレット ===== */
   .palette {
     width: 520px;
-    height: 640px;
+    height: 620px;
     padding: 16px;
+    margin: 0 16px;
   }
 
   .grid {
-    gap: 8px;
+    gap: 12px;
     padding-top: 24px;
   }
 
-  .prev-row-btn,
-  .next-row-btn {
-    width: 240px;
+  .grid img {
+    border-radius: 12%;
+  }
+
+  /* ===== result ===== */
+  .result {
+    flex: none;
+    width: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .result-canvas {
@@ -243,11 +264,21 @@ body {
     height: 820px;
   }
 
-  .genre {
-    height: 100px;
-    font-size: 12px;
+  /* ===== bgReload ===== */
+  .reload-btn {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  /* ===== Undo ===== */
+  .undo-btn {
+    width: 48px;
   }
 }
+
 
 /* =========================
    iPad 縦向き（〜899px）
