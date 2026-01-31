@@ -103,34 +103,42 @@ body {
   gap: 10px;
   overflow: hidden;
   margin-top: 30px;
-  z-index: 80000;
+
+  position: relative;
+  z-index: 1;
 }
+
 
 .grid img {
   background: #fff;
-  width: 95%;
+  width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
   cursor: pointer;
   border-radius: 10%;
 
-  /* シャドウ */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
     filter 0.15s ease;
+
+  position: relative;
+  z-index: 1;
 }
 
-/* ホバー */
+
 .grid img:hover {
   transform: translateY(-4px) scale(1.03);
   box-shadow:
     0 10px 20px rgba(255, 255, 255, 0.6),
     0 6px 12px rgba(0, 0, 0, 0.25);
   filter: brightness(1.08);
+
+  z-index: 1; /* ← 上げない */
 }
+
 
 /* タップ */
 .grid img:active {
