@@ -118,6 +118,7 @@ body {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   cursor: pointer;
+  border-radius: 10%;
 }
 
 
