@@ -77,15 +77,8 @@ body {
   box-sizing: border-box;
 }
 
-/* パレット上部（固定） */
-.palette-header {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* パレット下部（固定） */
+/* 上下固定エリア */
+.palette-header,
 .palette-footer {
   height: 60px;
   display: flex;
@@ -93,7 +86,7 @@ body {
   align-items: center;
 }
 
-/* 上下スクロールボタン */
+/* スクロールボタン */
 .prev-row-btn,
 .next-row-btn {
   width: 300px;
@@ -101,10 +94,10 @@ body {
 }
 
 /* =========================
-   アイテム表示エリア（中央可変）
+   アイテム表示エリア
 ========================= */
 .grid {
-  flex: 1;                     /* 残り高さのみ使用 */
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -119,23 +112,53 @@ body {
   object-fit: contain;
   cursor: pointer;
   border-radius: 10%;
+
+  /* シャドウ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
 }
 
-
-/* パレット下部 */
-.palette-footer {
-  width: 100%;
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* ホバー */
+.grid img:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 10px 20px rgba(255, 255, 255, 0.6),
+    0 6px 12px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.08);
 }
 
-/* 上下スクロールボタン共通 */
-.next-row-btn,
-.prev-row-btn {
-  width: 300px;
-  cursor: pointer;
+/* タップ */
+.grid img:active {
+  transform: scale(0.96);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   パーティクル
+========================= */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle-fade 600ms ease-out forwards;
+}
+
+@keyframes particle-fade {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
 }
 
 /* =========================
@@ -158,7 +181,6 @@ body {
   position: relative;
 }
 
-/* 着せ替えレイヤー専用 */
 .result-canvas img[data-genre] {
   position: absolute;
   top: 0;

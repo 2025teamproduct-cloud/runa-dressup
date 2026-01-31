@@ -5,8 +5,8 @@ const genres = document.querySelectorAll(".genre");
 const grid = document.getElementById("itemGrid");
 const bgReloadBtn = document.getElementById("bgReload");
 const resultCanvas = document.getElementById("resultCanvas");
-const paletteScrollBtn = document.getElementById("paletteScrollBtn"); // 下
-const paletteScrollUpBtn = document.getElementById("paletteScrollUpBtn"); // 上（追加）
+const paletteScrollBtn = document.getElementById("paletteScrollBtn");
+const paletteScrollUpBtn = document.getElementById("paletteScrollUpBtn");
 const undoBtn = document.getElementById("undoBtn");
 
 /* =========================
@@ -33,7 +33,6 @@ bgReloadBtn.addEventListener("click", () => {
 ========================= */
 let currentGenre = "ワンピース";
 
-/* 表示名 → フォルダ名 */
 const genreMap = {
   "ワンピース": "one-piece",
   "トップス": "tops",
@@ -44,7 +43,6 @@ const genreMap = {
   "その他": "other"
 };
 
-/* 画像リスト */
 const genreImages = {
   "ワンピース": ["one-piece.png"],
   "トップス": [
@@ -158,7 +156,7 @@ undoBtn.addEventListener("click", () => {
 });
 
 /* =========================
-   スクロール（下に4枚）
+   スクロール
 ========================= */
 paletteScrollBtn.addEventListener("click", () => {
   const files = genreImages[currentGenre];
@@ -168,14 +166,34 @@ paletteScrollBtn.addEventListener("click", () => {
   renderGrid();
 });
 
-/* =========================
-   スクロール（上に4枚）
-========================= */
 paletteScrollUpBtn.addEventListener("click", () => {
   if (startIndex === 0) return;
 
   startIndex = Math.max(0, startIndex - SLIDE_COUNT);
   renderGrid();
+});
+
+/* =========================
+   パーティクル
+========================= */
+document.addEventListener("click", e => {
+  if (!e.target.closest(".grid img")) return;
+
+  for (let i = 0; i < 8; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 20 + Math.random() * 20;
+
+    p.style.left = `${e.clientX}px`;
+    p.style.top = `${e.clientY}px`;
+    p.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+    p.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
+
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 600);
+  }
 });
 
 /* =========================
