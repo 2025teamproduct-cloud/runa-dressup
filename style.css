@@ -196,159 +196,159 @@ body {
   z-index: 20;
 }
 
-/* =========================
-   iPad 横向き（11 / 12.9 両対応）
-   1024px 〜 1366px
-========================= */
-@media screen and (max-width: 1366px) and (min-width: 1024px) {
+/* ================================
+   iPad レスポンシブ対応
+   対象解像度:
+   2360×1640 / 2732×2048
+================================ */
 
-  .wrapper {
-    padding: 24px;
-  }
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
 
-  .app {
-    height: auto;
-    align-items: flex-start;
-  }
+  /* ---------- 全体レイアウト ---------- */
 
-  /* ===== genre ===== */
-  .genres {
-    gap: 8px;
-  }
-
-  .genre {
-    height: 100px;
-    font-size: 12px;
-  }
-
-  /* ===== result ===== */
-  .result {
-    flex: none;
-    width: 560px;
+  .editor-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 16px;
+  }
+
+  /* ---------- resultCanvas ---------- */
+
+  .result-wrapper {
+    position: relative;
+    width: 520px;
   }
 
   .result-canvas {
-    width: 560px;
-    height: 860px;
+    width: 520px;
+    height: 820px;
+    margin: 0 auto;
   }
 
-  /* ===== palette ===== */
-  .palette {
-    width: 560px;
-    height: 640px;
-    padding: 16px;
-    margin: 0 16px;
-  }
+  /* ---------- Undo / bgReload ---------- */
 
-  /* ===== grid ===== */
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding-top: 24px;
-  }
-
-  .grid img {
-    border-radius: 12%;
-  }
-
-  /* ===== controls on canvas ===== */
+  .undo-btn,
   .reload-btn {
-    top: 14px;
-    right: 14px;
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    z-index: 40;
+    position: absolute;
+    z-index: 50;
   }
 
   .undo-btn {
-    top: 14px;
-    left: 14px;
-    width: 48px;
-    z-index: 40;
+    top: 12px;
+    left: 12px;
+  }
+
+  .reload-btn {
+    top: 12px;
+    right: 12px;
+  }
+
+  /* ---------- pallet ---------- */
+
+  .pallet {
+    width: 520px;
+    padding: 8px;
+  }
+
+  /* ---------- genre バー ---------- */
+
+  .genre-bar {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+  }
+
+  .genre-bar::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .genre-bar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+
+  /* ---------- item grid ---------- */
+
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .item-grid img {
+    width: 100%;
+    height: auto;
+    max-height: 90px;
+    object-fit: contain;
   }
 }
 
-/* =========================
-   iPad 縦向き（全機種）
-   〜1023px
-========================= */
-@media screen and (max-width: 1023px) {
 
-  .wrapper {
-    padding: 20px;
+/* ================================
+   iPad Pro 12.9 inch 対応
+   2732×2048 を想定
+================================ */
+
+@media screen and (min-width: 1367px) {
+
+  .editor-wrapper {
+    gap: 20px;
   }
 
-  .app {
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-  }
+  /* ---------- resultCanvas ---------- */
 
-  /* ===== genre ===== */
-  .genres {
-    flex-direction: row;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .genre {
-    writing-mode: horizontal-tb;
-    height: auto;
-    width: auto;
-    padding: 8px 10px;
-    font-size: 12px;
-    transform: none;
-  }
-
-  .genre.active {
-    transform: none;
-  }
-
-  /* ===== palette / result ===== */
-  .palette,
-  .result-canvas {
-    width: 100%;
-    max-width: 640px;
-  }
-
-  .palette {
-    height: 620px;
-    margin: 0;
-  }
-
-  .result {
-    margin-top: 24px;
+  .result-wrapper {
+    width: 600px;
   }
 
   .result-canvas {
-    height: 900px;
+    width: 600px;
+    height: 940px;
   }
 
-  /* ===== grid ===== */
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding-top: 20px;
-  }
+  /* ---------- Undo / bgReload ---------- */
 
-  .prev-row-btn,
-  .next-row-btn {
-    width: 220px;
-  }
-
-  /* ===== controls ===== */
+  .undo-btn,
   .reload-btn {
-    top: 14px;
-    right: 14px;
+    z-index: 50;
   }
 
   .undo-btn {
     top: 14px;
     left: 14px;
-    width: 48px;
+  }
+
+  .reload-btn {
+    top: 14px;
+    right: 14px;
+  }
+
+  /* ---------- pallet ---------- */
+
+  .pallet {
+    width: 600px;
+  }
+
+  /* ---------- genre バー ---------- */
+
+  .genre-bar {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* ---------- item grid ---------- */
+
+  .item-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .item-grid img {
+    max-height: 100px;
   }
 }
