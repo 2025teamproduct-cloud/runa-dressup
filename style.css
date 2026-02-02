@@ -31,6 +31,9 @@ body {
   background: #fff;
   font-size: 20px;
   cursor: pointer;
+
+  /* ★ 追加：最前面に出す */
+  z-index: 30;
 }
 
 /* =========================
@@ -91,7 +94,6 @@ body {
 .next-row-btn {
   width: 300px;
   cursor: pointer;
-  /* z-index: -1; */
 }
 
 /* =========================
@@ -102,13 +104,11 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  /* overflow: hidden; */
   padding-top: 30px;
 
   position: relative;
   z-index: 1;
 }
-
 
 .grid img {
   background: #fff;
@@ -129,19 +129,14 @@ body {
   z-index: 1;
 }
 
-
 .grid img:hover {
   transform: translateY(-4px) scale(1.03);
   box-shadow:
     0 10px 20px rgba(255, 255, 255, 0.6),
     0 6px 12px rgba(0, 0, 0, 0.25);
   filter: brightness(1.08);
-
-  z-index: 1; /* ← 上げない */
 }
 
-
-/* タップ */
 .grid img:active {
   transform: scale(0.96);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
@@ -223,7 +218,6 @@ body {
     align-items: flex-start;
   }
 
-  /* ===== ジャンル ===== */
   .genres {
     gap: 8px;
   }
@@ -233,7 +227,6 @@ body {
     font-size: 12px;
   }
 
-  /* ===== パレット ===== */
   .palette {
     width: 520px;
     height: 620px;
@@ -250,7 +243,6 @@ body {
     border-radius: 12%;
   }
 
-  /* ===== result ===== */
   .result {
     flex: none;
     width: 520px;
@@ -264,21 +256,16 @@ body {
     height: 820px;
   }
 
-  /* ===== bgReload ===== */
   .reload-btn {
-    top: 10px;
-    right: 10px;
     width: 36px;
     height: 36px;
     font-size: 18px;
   }
 
-  /* ===== Undo ===== */
   .undo-btn {
     width: 48px;
   }
 }
-
 
 /* =========================
    iPad 縦向き（〜899px）
@@ -295,7 +282,6 @@ body {
     height: auto;
   }
 
-  /* ジャンルを横並びに変更 */
   .genres {
     flex-direction: row;
     gap: 8px;
