@@ -271,6 +271,7 @@ body {
     width: 36px;
     height: 36px;
     font-size: 18px;
+    z-index: 100;
   }
 
   /* ===== Undo ===== */
