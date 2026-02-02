@@ -197,12 +197,13 @@ body {
 }
 
 /* =========================
-   iPad 横向き（1024px）
+   iPad 横向き（11 / 12.9 両対応）
+   1024px 〜 1366px
 ========================= */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1366px) and (min-width: 1024px) {
 
   .wrapper {
-    padding: 20px;
+    padding: 24px;
   }
 
   .app {
@@ -210,6 +211,7 @@ body {
     align-items: flex-start;
   }
 
+  /* ===== genre ===== */
   .genres {
     gap: 8px;
   }
@@ -219,15 +221,29 @@ body {
     font-size: 12px;
   }
 
-  /* ★ pallet を result に合わせる */
+  /* ===== result ===== */
+  .result {
+    flex: none;
+    width: 560px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .result-canvas {
+    width: 560px;
+    height: 860px;
+  }
+
+  /* ===== palette ===== */
   .palette {
-    width: 520px;
-    height: 620px;
+    width: 560px;
+    height: 640px;
     padding: 16px;
     margin: 0 16px;
   }
 
-  /* ★ grid を 3列に縮小 */
+  /* ===== grid ===== */
   .grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
@@ -238,38 +254,29 @@ body {
     border-radius: 12%;
   }
 
-  .result {
-    flex: none;
-    width: 520px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .result-canvas {
-    width: 520px;
-    height: 820px;
-  }
-
-  /* ★ resultCanvas 上に配置 */
+  /* ===== controls on canvas ===== */
   .reload-btn {
-    top: 12px;
-    right: 12px;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
     z-index: 40;
   }
 
   .undo-btn {
-    top: 12px;
-    left: 12px;
-    z-index: 40;
+    top: 14px;
+    left: 14px;
     width: 48px;
+    z-index: 40;
   }
 }
 
 /* =========================
-   iPad 縦向き（〜899px）
+   iPad 縦向き（全機種）
+   〜1023px
 ========================= */
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 1023px) {
 
   .wrapper {
     padding: 20px;
@@ -281,6 +288,7 @@ body {
     height: auto;
   }
 
+  /* ===== genre ===== */
   .genres {
     flex-direction: row;
     gap: 8px;
@@ -300,7 +308,7 @@ body {
     transform: none;
   }
 
-  /* ★ pallet / result 幅を完全一致 */
+  /* ===== palette / result ===== */
   .palette,
   .result-canvas {
     width: 100%;
@@ -312,7 +320,15 @@ body {
     margin: 0;
   }
 
-  /* ★ grid は 3列維持 */
+  .result {
+    margin-top: 24px;
+  }
+
+  .result-canvas {
+    height: 900px;
+  }
+
+  /* ===== grid ===== */
   .grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -324,15 +340,15 @@ body {
     width: 220px;
   }
 
-  .result {
-    margin-top: 24px;
-  }
-
-  .result-canvas {
-    height: 900px;
+  /* ===== controls ===== */
+  .reload-btn {
+    top: 14px;
+    right: 14px;
   }
 
   .undo-btn {
+    top: 14px;
+    left: 14px;
     width: 48px;
   }
 }
