@@ -44,20 +44,61 @@ const genreMap = {
 };
 
 const genreImages = {
-  "ワンピース": ["one-piece.png"],
-  "トップス": [
-    "tops1.png","tops2.png","tops3.png","tops4.png",
-    "tops5.png","tops6.png","tops7.png","tops8.png",
-    "tops9.png","tops10.png","tops11.png","tops12.png",
-    "tops13.png","tops14.png","tops15.png","tops16.png",
-    "tops17.png","tops18.png","tops19.png"
+  "ワンピース": [
+    "one-piece_1.png",
+    "one-piece_2.png",
+    "one-piece_3.png",
+    "one-piece_4.png",
+    "one-piece_5.png",
   ],
-  "ボトムス": ["bottoms.png"],
-  "シューズ": ["shoes.png"],
-  "髪型": ["hair.png"],
-  "目": ["eye.png"],
-  "その他": ["other.png"]
+  "トップス": [
+    "tops_1.png",
+    "tops_2.png",
+    "tops_3.png",
+  ],
+  "ボトムス": [
+    "bottoms_1.png",
+    "bottoms_2.png",
+  ],
+  "シューズ": [
+    "shoes_1.png",
+    "shoes_2.png",
+    "shoes_3.png",
+    "shoes_4.png",
+  ],
+  "髪型": [
+    "hair_1.png",
+    "hair_2.png",
+    "hair_3.png",
+    "hair_4.png",
+    "hair_5.png",
+    "hair_6.png",
+    "hair_7.png",
+    "hair_8.png",
+    "hair_9.png",
+    "hair_10.png",
+    "hair_11.png",
+    "hair_12.png",
+    "hair_13.png",
+    "hair_14.png",
+    "hair_15.png",
+  ],
+  "目": [
+    "eye_1.png",
+    "eye_2.png",
+    "eye_3.png",
+    "eye_4.png",
+    "eye_5.png",
+    "eye_6.png",
+    "eye_7.png",
+  ],
+  "その他": [
+    "other_1.png",
+    "other_2.png",
+    "other_3.png",
+  ]
 };
+
 
 /* =========================
    表示制御
