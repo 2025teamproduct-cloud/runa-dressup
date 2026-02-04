@@ -152,6 +152,7 @@ body {
     transform: translate(0, 0) scale(1);
     opacity: 1;
   }
+
   100% {
     transform: translate(var(--x), var(--y)) scale(0);
     opacity: 0;
@@ -268,6 +269,12 @@ body {
   .genre-bar::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 3px;
+  }
+
+  /* grid */
+  .grid {
+    flex: none;
+    height: auto;
   }
 
   /* ---------- item grid ---------- */
