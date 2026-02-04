@@ -249,6 +249,7 @@ body {
 
   .pallet {
     width: 520px;
+    height: 600px;
     padding: 8px;
   }
 
@@ -339,7 +340,6 @@ body {
 
   .pallet {
     width: 600px;
-    height: 600px;
   }
 
   /* ---------- genre バー ---------- */
