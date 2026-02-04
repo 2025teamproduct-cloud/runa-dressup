@@ -212,7 +212,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    height: 820px; /* ★ 高さの基準点 */
+    height: 820px;
+    /* ★ 高さの基準点 */
   }
 
   /* ---------- resultCanvas ---------- */
@@ -225,7 +226,8 @@ body {
 
   .result-canvas {
     width: 520px;
-    height: 100%; /* ★ 親に従属 */
+    height: 100%;
+    /* ★ 親に従属 */
     margin: 0 auto;
   }
 
@@ -251,8 +253,21 @@ body {
 
   .palette {
     width: 520px;
-    height: 100%; /* ★ result-canvas と完全一致 */
+    height: 100%;
+    /* ★ result-canvas と完全一致 */
     padding: 8px;
+    position: relative;
+    /* 追加 */
+  }
+
+  /* next-row-btn */
+
+  .next-row-btn {
+    position: absolute;
+    bottom: 12px;
+    /* 下から固定 */
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   /* ---------- genre バー ---------- */
@@ -278,7 +293,8 @@ body {
 
   .grid {
     flex: none;
-    height: auto; /* ★ 余剰高さを発生させない */
+    height: auto;
+    /* ★ 余剰高さを発生させない */
   }
 
   /* ---------- item grid ---------- */
