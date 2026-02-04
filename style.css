@@ -295,7 +295,7 @@ body {
     width: 100%;
     max-width: calc(100% - 80px); /* ボタン被り防止 */
     margin: 0 auto;
-    padding-bottom: 64px;        /* next-row-btn 分の逃げ */
+    padding-bottom: 30px;        /* next-row-btn 分の逃げ */
     box-sizing: border-box;
 
     /* 既存 grid 設定を維持 */
