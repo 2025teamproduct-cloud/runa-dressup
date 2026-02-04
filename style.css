@@ -276,7 +276,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, auto);
-    gap: 8px;
+    gap: 2px;
     width: 100%;
   }
 
