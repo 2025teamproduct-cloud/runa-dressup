@@ -32,7 +32,7 @@ $('#tiles').onclick = e => {
     const it = getItems()[+b.dataset.i]; const f = cart.find(c => c.n === it.n && c.p === it.p);
     f ? f.q++ : cart.push({ n: it.n, p: it.p, q: 1 }); renderCart();
 };
-$('#editBtn').onclick = () => { edit = !edit; $('#addBox').hidden = !edit; $('#editBtn').textContent = edit ? '完了' : '編集'; renderTiles() };
+$('#editBtn').onclick = () => { edit = !edit; $('#editBtn').textContent = edit ? '完了' : '削除編集'; renderTiles() };
 $('#addBtn').onclick = () => {
     const n = $('#newName').value.replace(/[\t\n]/g, ' ').trim(), p = Math.max(0, parseInt($('#newPrice').value) || 0);
     if (!n) return toast('商品名を入力してください');

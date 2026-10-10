@@ -16,12 +16,12 @@
 
     <section id="v-reg" class="reg">
         <div class="card">
-            <h2>商品 <button class="sec" id="editBtn" style="float:right;padding:2px 10px">編集</button></h2>
+            <h2>商品 <button class="sec" id="editBtn">削除編集</button></h2>
             <div class="grid" id="tiles"></div>
-            <div class="add" id="addBox" hidden>
-                <input id="newName" placeholder="商品名">
-                <input id="newPrice" type="number" min="0" placeholder="価格">
-                <button class="sec" id="addBtn">追加</button>
+            <div class="add" id="addBox">
+                <input id="newName" aria-label="商品名" placeholder="商品名">
+                <input id="newPrice" aria-label="価格" type="number" min="0" inputmode="numeric" placeholder="価格">
+                <button class="sec" id="addBtn">商品を登録</button>
             </div>
         </div>
         <div class="card">
