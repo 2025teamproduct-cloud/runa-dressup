@@ -117,7 +117,7 @@ nav button.on {
     gap: 12px
 }
 
-@media(min-width:1024px) {
+@media(min-width:1024px) and (orientation:landscape) {
     .reg {
         grid-template-columns: minmax(0, 1.25fr) minmax(340px, .9fr);
         gap: 16px;
